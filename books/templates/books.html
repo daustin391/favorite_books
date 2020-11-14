@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome, {{this_user.first_name}}!</h1>
+        <a href="/logout">Log Out</a>
+    </header>
+    <main>
+        <form action="books/add" method="POST">
+            {% csrf_token %}
+            <h2>Add a Favorite Book</h2>
+            <label for="title">Title</label>
+            <input type="text" name="title">
+            <label for="desc">Description</label>
+            <textarea name="desc"></textarea>
+
+            <button type="submit">Add</button>
+        </form>
+        <!-- <ul>
+            {% for msg in all_messages|dictsortreversed:"created_at" %}
+            <li>
+                <h2>{{ msg.user_id.first_name }} {{ msg.user_id.last_name }} - {{ msg.created_at |date:"F jS Y" }} </h2>
+                {{msg.message}}
+                <form action="post/{{ msg.id }}" method="POST">
+                    {% csrf_token %}
+                    <label for="comment">
+                        <h3>Post a comment</h3>
+                    </label>
+                    <textarea name="comment"></textarea>
+
+                    <button type="submit">Post a comment</button>
+                </form>
+                <ul class="comments">
+                    {% for comment in msg.comments.all|dictsort:"created_at" %}
+                    <h2>{{ comment.user_id.first_name }} {{ comment.user_id.last_name }} -
+                        {{ comment.created_at |date:"F jS Y" }} </h2>
+                    {{comment.comment}}
+
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+
+        </ul> -->
+
+    </main>
+</body>
+
+</html>

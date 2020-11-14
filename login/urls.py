@@ -5,6 +5,6 @@ urlpatterns = [
     path("", views.index),
     path("register", views.register),
     path("login", views.login),
-    path("wall/", include("wall.urls")),
+    path("books/", include("books.urls")),
     path("logout", views.logout),
 ]

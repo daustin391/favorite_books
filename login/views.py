@@ -13,7 +13,7 @@ def index(request):
 
 def success_redirect(request, user_id):
     request.session["id"] = user_id
-    return redirect("/wall")
+    return redirect("/books")
 
 
 def register(request):
