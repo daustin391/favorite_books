@@ -1,0 +1,40 @@
+{% extends "books.html" %}
+
+{% block update %} action="{{this_book.id}}/update" {% endblock %}
+
+{% block update__title %}
+<input type="text" value="{{this_book.title}}" name="title">
+<p>Added by: {{ this_book.uploaded_by.first_name }} {{ this_book.uploaded_by.last_name }}</p>
+<p>Added on: {{ this_book.created_at|date:"N j, Y @ P"}}</p>
+<p>Last updated on: {{ this_book.created_at|date:"N j, Y @ P"}}</p>
+{% endblock %}
+
+{% block update__desc %}<textarea name="desc">{{ this_book.desc }}</textarea>{% endblock %}
+
+
+
+{% block update__btn %}
+<button type="submit">Update</button>
+<button type="submit" name="delete">Delete</button>
+{% endblock %}
+
+
+{% block users %}
+<h2>Users Who Like This Book:</h2>
+<ul>
+
+    {% for user in this_book.favorites.all %}
+    <li>
+        {{ user.first_name }} {{user.last_name }}
+        {% if user == this_user %}
+        <a href="{{this_book.id}}/favorites">Un-Favorite</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+{% if this_user not in this_book.favorites.all %}
+<a href="{{this_book.id}}/favorites">Add to Favorites</a>
+{% endif %}
+
+{% endblock %}
