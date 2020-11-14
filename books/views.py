@@ -38,7 +38,13 @@ def details(request, book_id):
 
 def update(request, book_id):
     if request.method == "POST":
-        Book.objects.updates(request.POST, book_id)
+        errors = Book.objects.validate(request.POST)
+        if errors:
+            for msg in errors.values():
+                messages.error(request, msg)
+            return redirect(f"/books/{book_id}")
+        else:
+            Book.objects.updates(request.POST, book_id)
     return redirect("/books")
 
 
