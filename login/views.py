@@ -26,6 +26,7 @@ def register(request):
             password = request.POST["password"]
             hashword = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
             User.objects.create(
+                username=request.POST["username"],
                 first_name=request.POST["first_name"],
                 last_name=request.POST["last_name"],
                 email=request.POST["email"],
@@ -51,3 +52,16 @@ def login(request):
 def logout(request):
     request.session.flush()
     return redirect("/")
+
+
+def username(request):
+    if request.method == "POST":
+        print("request received")
+        context = {}
+        for this_user in User.objects.all():
+            if request.POST["username"] == this_user.username:
+                print("this statement was true")
+                context = {
+                    "used": True
+                }
+    return render(request, "partial.html", context)

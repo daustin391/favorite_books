@@ -4,7 +4,9 @@
     font-size: 1em;
 }
 
-html { font-size: 62.5%; }
+html {
+    font-size: 62.5%;
+}
 
 body {
     padding: 25px;
@@ -15,19 +17,21 @@ body {
 textarea,
 input,
 body {
-    color: #1b2037;
+    color: #e4efff;
     line-height: 1.45;
     font-size: 18px;
     font-family: Helvetica, Arial, sans-serif;
-    background-color:  #dde3e3; 
+    background-color: #030505;
 }
 
 ul,
-main { 
-    width: 62.5% ;
+main {
+    width: 62.5%;
 }
 
-main { margin: 0 auto; }
+main {
+    margin: 0 auto;
+}
 
 #log_and_reg {
     display: flex;
@@ -35,30 +39,33 @@ main { margin: 0 auto; }
     justify-content: space-between;
 }
 
-li { 
-    color: #34131a;
+li {
+    color: #f9c89a;
     list-style: none;
     margin-top: 2em;
 }
 
-
-
 header {
     display: flex;
     flex-direction: row;
-    border-bottom:  2px solid #0e9e5e; 
+    border-bottom: 2px solid #433c47;
     width: 100%;
 }
 
-h1 { flex-grow: 1; }
+h1 {
+    flex-grow: 1;
+}
 
 header p,
-header a { min-width: 100px; }
+header a {
+    min-width: 100px;
+}
 
-header a { text-align: end; }
+header a {
+    text-align: end;
+}
 
-
-textarea { 
+textarea {
     resize: none;
     width: 100%;
 }
@@ -66,26 +73,31 @@ textarea {
 td,
 th,
 textarea,
-input { padding: 3px; }
+input {
+    padding: 3px;
+}
 
-::focus { outline: 5px auto #ffe345; }
+::focus {
+    outline: 5px auto #fe8c8f;
+}
 
-ul { 
+ul {
     margin-left: auto;
     font-size: 90%;
 }
 
-
 textarea,
 table,
 button,
-input { border: 2px solid #804227; }
+input {
+    border: 2px solid #d1080e;
+}
 
 button {
-    background-color: #21e9c1;
+    background-color: #4de2f4;
     padding: 2px 4px;
-    margin: .75em;
-    box-shadow: 2px 2px #293362;
+    margin: 0.75em;
+    box-shadow: 2px 2px #2896c6;
     cursor: pointer;
     height: 30px;
     justify-self: center;
@@ -93,12 +105,14 @@ button {
 }
 
 button,
-h2 { 
+h2 {
     grid-column: 1 / 3;
     text-align: center;
 }
 
-h2 { text-align: start;}
+h2 {
+    text-align: start;
+}
 
 #login,
 #reg {
@@ -110,5 +124,18 @@ h2 { text-align: start;}
 
 #login {
     grid-template-rows: repeat(3, auto) 1fr;
-} 
+}
 
+#reg div {
+    grid-column: 1 / 3;
+}
+
+.warning {
+    font-style: oblique;
+    color: #af3703;
+}
+
+.success {
+    font-style: oblique;
+    color: #cce761;
+}

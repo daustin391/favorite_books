@@ -7,4 +7,5 @@ urlpatterns = [
     path("login", views.login),
     path("books/", include("books.urls")),
     path("logout", views.logout),
+    path("username", views.username),
 ]

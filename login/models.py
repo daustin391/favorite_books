@@ -9,7 +9,7 @@ class UserManager(models.Manager):
             r"^[A-Za-z]+[-0-9A-Za-z._]*@[-0-9A-Za-z]{1,63}\.[A-Za-z]{1,63}$"
         )
         for key, value in form_data.items():
-            if key in ("first_name", "last_name") and len(value) < 2:
+            if key in ("first_name", "last_name", "username") and len(value) < 2:
                 errors[key] = "Names must be at least two characters"
             elif key == "email" and not EMAIL_FORMAT.match(form_data["email"]):
                 errors["email"] = "Invalid email address"
@@ -25,6 +25,7 @@ class UserManager(models.Manager):
 
 
 class User(models.Model):
+    username = models.CharField(max_length=64)
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email = models.EmailField(max_length=64)
