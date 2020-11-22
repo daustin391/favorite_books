@@ -8,7 +8,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <script defer src="{% static 'jquery.js' %}"></script>
-    <script defer src="{% static 'username-availability.js' %}"></script>
+    <script defer src="{% static 'usernames.js' %}"></script>
 </head>
 
 <body id="log_and_reg">
@@ -48,6 +48,12 @@
             {% endfor %}
 
         </ul>
+        <form action="usersearch" method="POST" name="usersearch">
+            {% csrf_token %}
+            <input type="search" name="search" id="search">
+            <div id="usernames"></div>
+        </form>
+
 
     </div>
     {% endblock %}

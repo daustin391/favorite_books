@@ -56,12 +56,22 @@ def logout(request):
 
 def username(request):
     if request.method == "POST":
-        print("request received")
         context = {}
         for this_user in User.objects.all():
             if request.POST["username"] == this_user.username:
-                print("this statement was true")
-                context = {
-                    "used": True
-                }
+                context = {"used": True}
     return render(request, "partial.html", context)
+
+
+def usersearch(request):
+    if request.method == "POST":
+
+        context = {
+            "all_users": User.objects.filter(
+                username__startswith=request.POST["search"]
+            )
+        }
+
+        return render(request, "usersearch.html", context)
+    else:
+        return redirect("/")
